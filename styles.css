@@ -42,6 +42,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  position: relative;
 }
 
 .nav__logo img {
@@ -241,7 +242,16 @@ nav {
   cursor: pointer;
 }
 
-@media (width < 1200px) {
+/* NUEVO: Estilo para botón hamburguesa */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--white);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
   .search {
     max-width: 235px;
   }
@@ -251,8 +261,30 @@ nav {
   }
 }
 
-@media (width < 900px) {
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+
   .nav__links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 80px;
+    left: 0;
+    padding: 1rem;
+    gap: 1rem;
+    z-index: 100;
+  }
+
+  .nav__links.nav__active {
+    display: flex;
+  }
+
+  .search,
+  .login {
     display: none;
   }
 
@@ -265,7 +297,7 @@ nav {
   }
 }
 
-@media (width < 600px) {
+@media (max-width: 600px) {
   .search {
     display: none;
   }
